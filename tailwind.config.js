@@ -7,11 +7,11 @@ export default {
     extend: {
       colors: {
         brand: '#7a003d',
-        font: '#564147',
-        accent: '#bb6e11',
+        font: '#382a35',
+        accent: '#aeb0b6',
         greenaccent: '#007a57',
-        darkaccent: '#0a2b3d',
-        lightaccent: '#d3b1b1',
+        darkaccent: '#7a003d',
+        lightaccent: '#f6cbcc',
         background:'#ffffff'
       },
       fontFamily: {

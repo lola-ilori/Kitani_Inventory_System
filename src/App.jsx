@@ -318,8 +318,8 @@ export default function InventoryTracker() {
             </div>
 
             <div className="text-center">
-              <h1 className="text-4xl font-bold text-white font-mainfont">Kitani Beauty Inventory</h1>
-              <p className="text-white">Track your products & sales</p>
+              <h1 className="text-4xl font-bold text-brand font-mainfont">Kitani Beauty Inventory</h1>
+              <p className="text-brand">Track your products & sales</p>
             </div>
           </div>
         </div>
@@ -408,28 +408,28 @@ export default function InventoryTracker() {
       </div>
 
       {/* Cards Section - Full Width */}
-      <div className="w-full bg-gradient-to-br from-blue-50 to-indigo-50 py-8">
+      <div className="w-full bg-background py-8">
         <div className="mx-auto" style={{ width: '95%' }}>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="bg-brand rounded-xl p-6 text-white shadow-lg">
+            <div className="bg-accent rounded-xl p-6 text-white shadow-lg">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-darkaccent font-semibold">{getFilterLabel()} Sales</span>
+                <span className="text-font font-semibold">{getFilterLabel()} Sales</span>
                 <DollarSign className="w-5 h-5" />
               </div>
               <div className="text-3xl font-bold">₦{totalSales.toLocaleString()}</div>
             </div>
 
-            <div className="bg-brand rounded-xl p-6 text-white shadow-lg">
+            <div className="bg-accent rounded-xl p-6 text-white shadow-lg">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-darkaccent font-semibold">{getFilterLabel()} Profit</span>
+                <span className="text-font font-semibold">{getFilterLabel()} Profit</span>
                 <TrendingUp className="w-5 h-5" />
               </div>
               <div className="text-3xl font-bold">₦{totalProfit.toLocaleString()}</div>
             </div>
             
-            <div className="bg-brand rounded-xl p-6 text-white shadow-lg">
+            <div className="bg-accent rounded-xl p-6 text-white shadow-lg">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-darkaccent font-semibold">Tithe</span>
+                <span className="text-font font-semibold">Tithe</span>
                 <DollarSign className="w-5 h-5" />
               </div>
               <div className="text-3xl font-bold">₦{tithe.toLocaleString()}</div>
@@ -564,15 +564,15 @@ export default function InventoryTracker() {
               <div className="bg-gradient-to-r from-darkaccent to-darkaccent p-4 text-white">
                 <div className="flex items-center justify-between flex-wrap gap-4">
                   <div>
-                    <p className="text-slate-300 mainfont text-xs tracking-wide font-semibold">Stock Cost Value</p>
+                    <p className="text-white mainfont text-s tracking-wide font-semibold">Stock Cost Value</p>
                     <p className="text-2xl font-bold main-font">₦{totalInventoryValue.toLocaleString()}</p>
                   </div>
                   <div className="text-right">
-                    <p className="text-slate-300 font-semibold mainfont text-xs tracking-wide">Stock Sale Value</p>
+                    <p className="text-white font-semibold mainfont text-s tracking-wide">Stock Sale Value</p>
                     <p className="text-xl font-bold main-font">₦{potentialRevenue.toLocaleString()}</p>
                   </div>
                   <div className="text-right">
-                    <p className="text-slate-300 font-semibold mainfont text-xs tracking-wide">Stock Profit</p>
+                    <p className="text-white font-semibold mainfont text-s tracking-wide">Stock Profit</p>
                     <p className="text-xl font-bold mainfont">₦{(potentialRevenue - totalInventoryValue).toLocaleString()}</p>
                   </div>
                 </div>
@@ -582,7 +582,7 @@ export default function InventoryTracker() {
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-3">
                     <h2 className="text-xl font-bold text-gray-800">Products</h2>
-                    <span className="bg-indigo-100 text-darkaccent px-3 py-1 rounded-full text-sm font-semibold">
+                    <span className="bg-accent text-white px-3 py-1 rounded-full text-sm font-semibold">
                       {products.length} items ({products.reduce((sum, p) => sum + p.stock, 0)} stock)
                     </span>
                   </div>
