@@ -311,9 +311,9 @@ export default function InventoryTracker() {
       <Toaster position="top-right" />
       {/* Header Section - Full Width */}
       <div className="w-full bg-brand shadow-sm border-b">
-        <div className="mx-auto py-6 " style={{ width: '95%' }}>
-          <div className="grid grid-cols-[auto_1fr] items-center">
-            <div className="flex justify-start">
+        <div className="mx-auto py-6" style={{ width: '95%' }}>
+          <div className="flex flex-col md:grid md:grid-cols-[auto_1fr] items-center gap-4">
+            <div className="flex justify-center md:justify-start">
               <img src={logo} alt="Kitani Beauty Logo" className="h-12 w-auto"/>
             </div>
 
@@ -321,10 +321,7 @@ export default function InventoryTracker() {
               <h1 className="text-4xl font-bold text-white font-mainfont">Kitani Beauty Inventory</h1>
               <p className="text-white">Track your products & sales</p>
             </div>
-
-            </div>
-
-          <div/>
+          </div>
         </div>
       </div>
 
