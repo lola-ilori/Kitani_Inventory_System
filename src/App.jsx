@@ -567,15 +567,15 @@ export default function InventoryTracker() {
               <div className="bg-gradient-to-r from-darkaccent to-darkaccent p-4 text-white">
                 <div className="flex items-center justify-between flex-wrap gap-4">
                   <div>
-                    <p className="text-slate-300 mainfont text-xs uppercase tracking-wide font-semibold">Stock Cost Value</p>
+                    <p className="text-slate-300 mainfont text-xs tracking-wide font-semibold">Stock Cost Value</p>
                     <p className="text-2xl font-bold main-font">₦{totalInventoryValue.toLocaleString()}</p>
                   </div>
                   <div className="text-right">
-                    <p className="text-slate-300 font-semibold mainfont text-xs uppercase tracking-wide">Stock Sale Value</p>
+                    <p className="text-slate-300 font-semibold mainfont text-xs tracking-wide">Stock Sale Value</p>
                     <p className="text-xl font-bold main-font">₦{potentialRevenue.toLocaleString()}</p>
                   </div>
                   <div className="text-right">
-                    <p className="text-slate-300 font-semibold mainfont text-xs uppercase tracking-wide">Stock Profit</p>
+                    <p className="text-slate-300 font-semibold mainfont text-xs tracking-wide">Stock Profit</p>
                     <p className="text-xl font-bold mainfont">₦{(potentialRevenue - totalInventoryValue).toLocaleString()}</p>
                   </div>
                 </div>
