@@ -310,9 +310,9 @@ export default function InventoryTracker() {
     <div className="min-h-screen bg-white">
       <Toaster position="top-right" />
       {/* Header Section - Full Width */}
-      <div className="w-full bg-brand shadow-sm border-b">
+      <div className="w-full bg-lightaccent shadow-sm border-b">
         <div className="mx-auto py-6" style={{ width: '95%' }}>
-          <div className="flex flex-col md:grid md:grid-cols-[auto_1fr] items-center gap-4">
+          <div className="flex flex-col md:grid md:grid-cols-[auto_1fr] items-center gap-2">
             <div className="flex justify-center md:justify-start">
               <img src={logo} alt="Kitani Beauty Logo" className="h-12 w-auto"/>
             </div>
@@ -411,7 +411,7 @@ export default function InventoryTracker() {
       <div className="w-full bg-gradient-to-br from-blue-50 to-indigo-50 py-8">
         <div className="mx-auto" style={{ width: '95%' }}>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="bg-lightaccent rounded-xl p-6 text-white shadow-lg">
+            <div className="bg-brand rounded-xl p-6 text-white shadow-lg">
               <div className="flex items-center justify-between mb-2">
                 <span className="text-darkaccent font-semibold">{getFilterLabel()} Sales</span>
                 <DollarSign className="w-5 h-5" />
@@ -419,7 +419,7 @@ export default function InventoryTracker() {
               <div className="text-3xl font-bold">₦{totalSales.toLocaleString()}</div>
             </div>
 
-            <div className="bg-lightaccent rounded-xl p-6 text-white shadow-lg">
+            <div className="bg-brand rounded-xl p-6 text-white shadow-lg">
               <div className="flex items-center justify-between mb-2">
                 <span className="text-darkaccent font-semibold">{getFilterLabel()} Profit</span>
                 <TrendingUp className="w-5 h-5" />
@@ -427,7 +427,7 @@ export default function InventoryTracker() {
               <div className="text-3xl font-bold">₦{totalProfit.toLocaleString()}</div>
             </div>
             
-            <div className="bg-lightaccent rounded-xl p-6 text-white shadow-lg">
+            <div className="bg-brand rounded-xl p-6 text-white shadow-lg">
               <div className="flex items-center justify-between mb-2">
                 <span className="text-darkaccent font-semibold">Tithe</span>
                 <DollarSign className="w-5 h-5" />
