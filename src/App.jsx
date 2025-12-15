@@ -151,16 +151,17 @@ export default function InventoryTracker() {
         .from('products')
         .update({
           name: editingProduct.name,
-          costprice: editingProduct.costPrice,
-          sellingprice: editingProduct.sellingPrice,
-          stock: editingProduct.stock
+          costPrice: parseFloat(editingProduct.costPrice),      // Make sure it's a number
+          sellingPrice: parseFloat(editingProduct.sellingPrice), // Make sure it's a number
+          stock: parseInt(editingProduct.stock)                  // Make sure it's a number
         })
         .eq('id', editingProduct.id);
 
       if (error) {
         console.error('Error updating product:', error);
-        alert('Failed to update product');
+        toast.error('Failed to update product: ' + error.message);
       } else {
+        toast.success('Product updated successfully!');
         setProducts(products.map(p => 
           p.id === editingProduct.id ? editingProduct : p
         ));
@@ -170,16 +171,19 @@ export default function InventoryTracker() {
   };
 
   const deleteProduct = async (id) => {
-    const { error } = await supabase
-      .from('products')
-      .delete()
-      .eq('id', id);
+    if (window.confirm('Are you sure you want to delete this product?')) {
+      const { error } = await supabase
+        .from('products')
+        .delete()
+        .eq('id', id);
 
-    if (error) {
-      console.error('Error deleting product:', error);
-      alert('Failed to delete product');
-    } else {
-      setProducts(products.filter(p => p.id !== id));
+      if (error) {
+        console.error('Error deleting product:', error);
+        toast.error('Failed to delete product: ' + error.message);
+      } else {
+        toast.success('Product deleted successfully!');
+        setProducts(products.filter(p => p.id !== id));
+      }
     }
   };
 
