@@ -482,7 +482,7 @@ export default function InventoryTracker() {
                             <div
                               key={p.id}
                               onClick={() => {
-                                setSaleForm({ ...saleForm, productId: p.id.toString() });
+                                setSaleForm({ ...saleForm, productId: p.id.toString(), sellingPrice: p.sellingPrice});
                                 setSaleProductSearch(p.name);
                                 setShowProductDropdown(false);
                               }}
@@ -742,6 +742,12 @@ export default function InventoryTracker() {
                                     <span className="text-gray-500">Profit:</span>
                                     <span className="ml-1 font-bold text-green-600">₦{(product.sellingPrice - product.costPrice).toLocaleString()}</span>
                                   </div>
+                                  <div className="bg-orange-50 px-2 py-1 rounded col-span-2 border border-orange-200">
+                                    <span className="text-gray-500 text-xs">20% Markup:</span>
+                                    <span className="ml-1 font-bold text-orange-600">₦{(product.costPrice * 1.2).toLocaleString()}</span>
+                                    <span className="text-gray-500 text-xs ml-2">(+₦{(product.costPrice * 0.2).toLocaleString()})</span>
+                                  </div>
+                                </div>
                                 </div>
                               </div>
                               <div className="flex gap-2 ml-3">
