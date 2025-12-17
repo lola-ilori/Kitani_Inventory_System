@@ -748,7 +748,6 @@ export default function InventoryTracker() {
                                     <span className="text-gray-500 text-xs ml-2">(+₦{(product.costPrice * 0.2).toLocaleString()})</span>
                                   </div>
                                 </div>
-                                </div>
                               </div>
                               <div className="flex gap-2 ml-3">
                                 <button
