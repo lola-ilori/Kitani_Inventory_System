@@ -744,8 +744,8 @@ export default function InventoryTracker() {
                                   </div>
                                   <div className="bg-orange-50 px-2 py-1 rounded col-span-2 border border-orange-200">
                                     <span className="text-gray-500 text-xs">20% Markup:</span>
-                                    <span className="ml-1 font-bold text-orange-600">₦{(product.costPrice * 1.2).toLocaleString()}</span>
-                                    <span className="text-gray-500 text-xs ml-2">(+₦{(product.costPrice * 0.2).toLocaleString()})</span>
+                                    <span className="ml-1 font-bold text-orange-600">₦{(product.costPrice * 1.3).toLocaleString()}</span>
+                                    <span className="text-gray-500 text-xs ml-2">(+₦{(product.costPrice * 0.3).toLocaleString()})</span>
                                   </div>
                                 </div>
                               </div>
