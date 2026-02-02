@@ -92,19 +92,18 @@ export default function InventoryTracker() {
       
       if (timeFilter === 'day') {
         return saleDate.getTime() === now.getTime();
-      } else if (timeFilter === 'week') {
+    } else if (timeFilter === 'week') {       
         const weekStart = new Date(now);
         const day = weekStart.getDay();
-        const diff = weekStart.getDate() - day + (day === 0 ? -6 : 1);
-        weekStart.setDate(diff);
+        weekStart.setDate(now.getDate() - day); // Sunday start
         weekStart.setHours(0, 0, 0, 0);
-        return saleDate >= weekStart && saleDate <= now;
-      } else if (timeFilter === 'month') {
-        return saleDate.getMonth() === now.getMonth() && 
-               saleDate.getFullYear() === now.getFullYear();
-      }
+      return saleDate >= weekStart && saleDate <= now; 
+        } else if (timeFilter === 'month') {
+          return saleDate.getMonth() === now.getMonth() && 
+            saleDate.getFullYear() === now.getFullYear();
+        }
       return true;
-    });
+    });   
   };
 
   const filteredSales = getFilteredSales();
@@ -266,36 +265,51 @@ export default function InventoryTracker() {
     }
   };
 
-  const deleteSale = async (sale) => {
-    if (window.confirm(`Delete this sale? Stock will be restored for ${sale.productname}.`)) {
-      const { error } = await supabase
-        .from('sales')
-        .delete()
-        .eq('id', sale.id);
+const deleteSale = async (sale) => {
+  console.log('Sale object:', sale); // Check what the sale object contains
+  
+  if (window.confirm(`Delete this sale? Stock will be restored for ${sale.productName}.`)) {
+    const { error } = await supabase
+      .from('sales')
+      .delete()
+      .eq('id', sale.id);
 
-      if (error) {
-        console.error('Error deleting sale:', error);
-        alert('Failed to delete sale');
-        return;
-      }
+    if (error) {
+      console.error('Error deleting sale:', error);
+      toast.error('Failed to delete sale: ' + error.message);
+      return;
+    }
 
-      // Restore stock
+    // Try both productId and productid
+    const productId = sale.productId || sale.productid;
+    console.log('Product ID:', productId);
+    
+    const product = products.find(p => p.id === productId);
+    console.log('Found product:', product);
+    
+    if (product) {
+      const newStock = product.stock + sale.quantity;
+      
       const { error: stockError } = await supabase
         .from('products')
-        .update({ stock: supabase.rpc('increment', { x: sale.quantity }) })
-        .eq('id', sale.productid);
+        .update({ stock: newStock })
+        .eq('id', productId);
 
       if (stockError) {
         console.error('Error restoring stock:', stockError);
+        toast.error('Sale deleted but stock restoration failed');
+      } else {
+        toast.success('Sale deleted and stock restored!');
       }
 
-      // Update UI
-      setSales(sales.filter(s => s.id !== sale.id));
       setProducts(products.map(p => 
-        p.id === sale.productid ? { ...p, stock: p.stock + sale.quantity } : p
+        p.id === productId ? { ...p, stock: newStock } : p
       ));
-    };
-  };
+    }
+
+    setSales(sales.filter(s => s.id !== sale.id));
+  }
+};
 
   const getFilterLabel = () => {
     if (timeFilter === 'day') return 'Today';
